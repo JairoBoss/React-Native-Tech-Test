@@ -13,7 +13,7 @@ export default configureStore({
         // Ignora estas rutas en el estado (usa una expresión regular o una función).
         ignoredPaths: [],
         // Advertencia cuando se supera este tiempo (en milisegundos)
-        warnAfter: 100, // Aumenta el límite a 100ms
+        warnAfter: 200, // Aumenta el límite a 200ms
       },
     }),
 });
