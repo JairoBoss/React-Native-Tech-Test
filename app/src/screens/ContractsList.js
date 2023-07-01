@@ -10,6 +10,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getPaginatedContracts } from "../services/ContractService";
 import ContractCard from "../components/ContractCard";
+import Pagination from "../components/Pagination";
+import SearchInput from "../components/SearchInput";
 
 const ContractsList = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -17,12 +19,12 @@ const ContractsList = ({ navigation }) => {
   const { contracts, loading } = useSelector((state) => state.contract);
 
   useEffect(() => {
-    dispatch(getPaginatedContracts({ page: 3, pageSize: 50 }));
+    dispatch(getPaginatedContracts({ page: 1, pageSize: 10 }));
   }, []);
 
   return (
     <>
-      {loading ? (
+      {false ? (
         <ActivityIndicator size="large" />
       ) : (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -33,6 +35,7 @@ const ContractsList = ({ navigation }) => {
               justifyContent: "center",
             }}
           >
+            <SearchInput />
             <FlatList
               data={contracts}
               keyExtractor={(item) => item._id.toString()}
@@ -41,6 +44,7 @@ const ContractsList = ({ navigation }) => {
               )}
             />
           </View>
+          <Pagination />
         </SafeAreaView>
       )}
     </>

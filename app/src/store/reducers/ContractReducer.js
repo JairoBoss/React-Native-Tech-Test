@@ -28,7 +28,7 @@ const contractsSlice = createSlice({
       .addCase(getPaginatedContracts.fulfilled, (state, action) => {
         state.loading = false;
         state.contracts = action.payload.results;
-        state.total = action.payload.total;
+        state.total = action.payload.pagination.total;
       });
   },
 });
